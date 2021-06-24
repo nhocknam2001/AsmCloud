@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Admin Page</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 5px 0px 0px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    {{!-- Welcome information --}}
+    <div style="text-align: center; padding-bottom:10px">
+        {{!-- Click the logo to show all product --}}
+        <a href="/admin"><img src="pics/Logo.jpg" alt=""></a>
+    </div>
+    {{!-- Search bar --}}
+    <div style="padding: 10px 0px px 8px; background-color:whitesmoke;">
+        <form method="POST" action="/search">
+            <input type="text" name="txtName">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    {{!-- Insert form --}}
+    <div style="background-color:whitesmoke;">
+        <form action="/doInsert" method="post">
+            <table class="table table-hover">
+                <tr>
+                    <td style="width:8%">Name:</td>
+                    <td style="float:left;"><input type="text" name="txtName"></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="text" name="txtPrice"></td>
+                </tr>
+                <tr>
+                    <td>URL Image:</td>
+                    <td><input type="text" name="imgUrl"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Insert"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    {{!-- All Product to fix --}}
+    <div style="background-color: white;">
+        {{#each model}}
+        <div style="display:inline-block;">
+            <table cellspacing="0" style="float:left; width: 200px; font-family: calibri; font-size:20px">
+                <div>
+                    <tr align="center">
+                        <td><img src="{{imgUrl}}" alt=""></td>
+                    </tr>
+                    <tr align="center">
+                        <td>{{name}} -- {{price}}</td>
+                    </tr>
+                    <tr align="center">
+                        <td><a href="/delete?id={{_id}}" onclick="return confirm('Are you sure')">Delete</a></td>
+                    </tr>
+                    <tr align="center">
+                        <td><a href="/edit?id={{_id}}">Edit</a></td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+        {{/each}}
+    </div>
+</body>
+
+</html>

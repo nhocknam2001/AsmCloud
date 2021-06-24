@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Edit Page</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .img {
+            /* The image used */
+            background-image: url("pics/Logo.jpg");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    {{!-- Edit form --}}
+    <div style="display: inline-block; padding: 20px 0px 0px 500px;">
+        <form action="/update" method="post">
+            <table class="table table-hover">
+                <tr>
+                    <td><input type="hidden" name="id" value="{{product._id}}"></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="txtName" value="{{product.name}}"></td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td><input type="text" name="txtPrice" value="{{product.price}}"></td>
+                </tr>
+                <tr>
+                    <td>Image Url</td>
+                    <td><input type="text" name="imgUrl" value="{{product.imgUrl}}"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Update"></td>
+                </tr>
+            </table>
+        </form>
+        <div>
+            <img src="{{product.imgUrl}}" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

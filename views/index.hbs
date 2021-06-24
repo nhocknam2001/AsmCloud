@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Index Page</title>
+</head>
+
+<body style="font-family: calibri;">
+    <div class="header">
+        <div style="font-size:50px; text-align:center; color:dodgerblue;">
+            <em>Toy Story Shop</em>
+        </div>
+    </div>
+    <div class="body">
+        {{!-- Logo of the shop --}}
+        <div style="text-align: center;">
+            <img src="pics/Logo.jpg" alt="">
+        </div>
+        <div style="font-size:50px; text-align:center; padding:20-20px"><a href="/view">All Product</a></div>
+        {{!-- All Product --}}
+        {{#each model}}
+        <div style="display:inline-block">
+            <table cellspacing="0" style="float:left; width: 200px;">
+                <div>
+                    <tr align="center">
+                        <td><img src="{{imgUrl}}" alt=""></td>
+                    </tr>
+                    <tr align="center">
+                        <td style="font-size: 20px;">{{name}} -- {{price}}</td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+        {{/each}}
+    </div>
+    <div class="footer">
+        {{!-- Login bar --}}
+        <div style="text-align: center; font-size:50px">
+            <h1>Administrator Login</h1>
+        </div>
+        <div>
+            <form action="/login" method="post">
+                User Name <input type="text" name="txtName">
+                <br>
+                Password <input type="password" name="txtPassword">
+                <br>
+                <h2 style="color: red;">{{errorMsg}}</h2>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        {{!-- Register bar --}}
+        <div>
+            <a href="/register">Register</a>
+        </div>
+        {{!-- Contact information --}}
+        <div>
+
+        </div>
+    </div>
+</body>
+
+</html>
