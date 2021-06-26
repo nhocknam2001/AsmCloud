@@ -10,22 +10,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Edit Page</title>
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-        }
-
-        .img {
-            /* The image used */
-            background-image: url("pics/Logo.jpg");
-
-            /* Full height */
-            height: 100%;
-
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+        span{
+            color: red;
         }
     </style>
 </head>
@@ -37,18 +23,19 @@
             <table class="table table-hover">
                 <tr>
                     <td><input type="hidden" name="id" value="{{product._id}}"></td>
+                    <td style="font-size: 20px; font-weight:bold">Product to edit</td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td><input type="text" name="txtName" value="{{product.name}}"></td>
+                    <td><input type="text" name="txtName" value="{{product.name}}" required></td>
                 </tr>
                 <tr>
                     <td>Price</td>
-                    <td><input type="text" name="txtPrice" value="{{product.price}}"></td>
+                    <td><input type="text" name="txtPrice" value="{{product.price}}" required><span>{{priceError}}</span></td>
                 </tr>
                 <tr>
                     <td>Image Url</td>
-                    <td><input type="text" name="imgUrl" value="{{product.imgUrl}}"></td>
+                    <td><input type="text" name="imgUrl" value="{{product.imgUrl}}" width="250px" required></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Update"></td>

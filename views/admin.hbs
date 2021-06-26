@@ -16,20 +16,27 @@
             margin: 0;
             padding: 5px 0px 0px 0px;
         }
+        span{
+            color: red;
+            font-size: medium;
+        }
     </style>
 </head>
 
 <body>
     {{!-- Welcome information --}}
     <div style="text-align: center; padding-bottom:10px">
-        {{!-- Click the logo to show all product --}}
-        <a href="/admin"><img src="pics/Logo.jpg" alt=""></a>
+        {{!-- Click the logo to go back index page --}}
+        <a href="/"><img src="pics/Logo.jpg" alt=""></a>
+        <h2>Welcome {{loginName}}</h2>
+        <a href="/admin"><h2>All Product</h2></a>
     </div>
     {{!-- Search bar --}}
     <div style="padding: 10px 0px px 8px; background-color:whitesmoke;">
         <form method="POST" action="/search">
-            <input type="text" name="txtName">
+            <input type="text" name="txtName" required>
             <input type="submit" value="Search">
+            <span>{{searchError}}</span>
         </form>
     </div>
     {{!-- Insert form --}}
@@ -38,15 +45,15 @@
             <table class="table table-hover">
                 <tr>
                     <td style="width:8%">Name:</td>
-                    <td style="float:left;"><input type="text" name="txtName"></td>
+                    <td style="float:left;"><input type="text" name="txtName" required></td>
                 </tr>
                 <tr>
                     <td>Price:</td>
-                    <td><input type="text" name="txtPrice"></td>
+                    <td><input type="text" name="txtPrice" required><span>{{priceError}}</span></td>
                 </tr>
                 <tr>
                     <td>URL Image:</td>
-                    <td><input type="text" name="imgUrl"></td>
+                    <td><input type="text" name="imgUrl" required></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Insert"></td>
@@ -55,13 +62,13 @@
         </form>
     </div>
     {{!-- All Product to fix --}}
-    <div style="background-color: white;">
+    <div>
         {{#each model}}
         <div style="display:inline-block;">
             <table cellspacing="0" style="float:left; width: 200px; font-family: calibri; font-size:20px">
                 <div>
                     <tr align="center">
-                        <td><img src="{{imgUrl}}" alt=""></td>
+                        <td><img src="{{imgUrl}}" alt="" width="250px"></td>
                     </tr>
                     <tr align="center">
                         <td>{{name}} -- {{price}}</td>
