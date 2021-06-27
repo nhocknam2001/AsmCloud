@@ -79,9 +79,10 @@ app.post('/update', async (req, res) => {
     const condition = { "_id": ObjectID(id) };
     const client = await MongoClient.connect(url);
     const dbo = client.db("anhttDB");
+    const productToEdit = await dbo.collection("SanPham").findOne(condition);
 
     if (isNaN(priceInput) == true || priceInput == null || priceInput <= 50) {
-        res.render('edit', { priceError: 'Unavailable price! - Please go back to the previous page for the old filled information' })
+        res.render('edit', { product: productToEdit, priceError: 'Unavailable price! - Please go back to the previous page for the old filled information' })
     }
     else {
         await dbo.collection("SanPham").updateOne(condition, newValues);
@@ -143,7 +144,7 @@ app.post('/login', async (req, res) => {
 // Show All Products In The Admin Page
 app.get('/admin', async (req, res) => {
     const results = await dbHandler.searchSanPham('', "SanPham");
-    res.render('admin', {model:results})
+    res.render('admin', { model: results })
 })
 
 // Go To Index Page
