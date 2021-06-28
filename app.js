@@ -115,7 +115,7 @@ app.post('/doRegister', async (req, res) => {
     const passInput = req.body.txtPassword;
     const newUser = { username: nameInput, password: passInput };
     const results = await dbHandler.searchSanPham('', "SanPham");
-    if (nameInput.indexOf("@") == -1) {
+    if (nameInput.indexOf("@") != -1) {
         res.render('index', { model: results, nameError: 'Missing @, Please refill your account' })
     }
     else if (passInput.length < 6) {
