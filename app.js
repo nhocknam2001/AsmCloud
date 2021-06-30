@@ -82,7 +82,7 @@ app.post('/update', async (req, res) => {
     const productToEdit = await dbo.collection("SanPham").findOne(condition);
 
     if (isNaN(priceInput) == true || priceInput == null || priceInput <= 50) {
-        res.render('edit', { product: productToEdit, priceError: 'Unavailable price! - Please go back to the previous page for the old filled information' })
+        res.render('edit', { product: productToEdit, priceError: 'Unavailable price!' })
     }
     else {
         await dbo.collection("SanPham").updateOne(condition, newValues);
